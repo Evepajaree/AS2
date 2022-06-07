@@ -1,8 +1,8 @@
 // import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
-import MarketDiffForm from "../components/MarketDiffForm";
-import MarketDiffList from "../components/MarketDiffList";
+// import MarketDiffForm from "../components/MarketDiffForm";
+// import MarketDiffList from "../components/MarketDiffList";
 import Topbar from "../components/Topbar";
 import NavLayout from "../layouts/NavLayout";
 
@@ -49,29 +49,33 @@ const MarketDiff = () => {
     const Show = () => {
         return (
             <div>
-                <h2>List1</h2>
-                <table>
+                <h2  className="text-left text-3xl font-bold" >List</h2>
+                <div>
+                <table className="bg-white rounded-t-lg rounded-b-lg">
+                <thead>
                     <tr>
-                        <th>Token1</th>
-                        <th>Token2</th>
-                        <th>Binance</th>
-                        <th>FTX</th>
-                        <th>Diff</th>
-                        <th>Action</th>
+                        <th className="p-4">Token1</th>
+                        <th className="p-4">Token2</th>
+                        <th className="p-4">Binance</th>
+                        <th className="p-4">FTX</th>
+                        <th className="p-4">Diff</th>
+                        <th className="p-4">Action</th>
                     </tr>
+                    </thead>
                     {allData.map((value, id) => (
                         <tr key={id}>
-                            <td>{value.token1}</td>
-                            <td>{value.token2}</td>
-                            <td>{value.priceBinance}</td>
-                            <td>{value.priceFTX}</td>
-                            <td>{value.diff}%</td>
+                            <td className="p-4">{value.token1}</td>
+                            <td className="p-4">{value.token2}</td>
+                            <td className="p-4">{value.priceBinance}</td>
+                            <td className="p-4">{value.priceFTX}</td>
+                            <td className="p-4">{value.diff}%</td>
                             <td>
-                                <button type="submit" onClick={delData} > Del</button>
+                                <button type="submit" onClick={delData} > Delete </button>
                             </td>
                         </tr>
                     ))}
                 </table>
+            </div>
             </div>
         );
     };
@@ -80,29 +84,51 @@ const MarketDiff = () => {
 
 <div className="bg-lightbg min-h-screen">
         <div className="flex justify-center w-full px-16 relative mb-14">
-          <MarketDiffForm />
+          {/* <MarketDiffForm /> */}
           <div className="bg-darkbg h-full w-full absolute -top-20" />
         </div>
         <div className="flex w-full px-16">
-          <MarketDiffList />
+          {/* <MarketDiffList /> */}
         </div>
       </div>
         
-            <h1>Market Diff</h1>
-            <div>
-                <form>
-                    <label>Token 1 </label>
-                    <div style={{ margin: "10px" }}>
-                        <input type="text" id="token1" name="token1" onChange={(e) => setToken1(e.target.value)} />
-                    </div>
-                    <label>Token 2 </label>
-                    <div style={{ margin: "10px" }}>
-                        <input type="text" id="token2" name="token2" onChange={(e) => setToken2(e.target.value)} />
-                    </div>
-                    <div style={{ margin: "10px" }}>
-                        <input type="submit" value="Fetch" onClick={getApi}></input>
-                    </div>
-                </form>
+            
+<div >
+ <div className="rounded-lg shadow-lg w-full max-w-4xl p-12 bg-white z-20 relative">
+  <form>         
+      <h3 className="text-3xl font-bold text-center mb-7">Market Diff</h3>
+         <div className="flex justify-center mb-5 space-x-12">
+          <div>
+            <p className="text-lg">Token 1</p>
+            <input
+              type="text"
+              id="token1"
+              name="token1"
+              onChange={(e) => setToken1(e.target.value)}
+              placeholder="Fill in token"
+              className="p-2 rounded shadow w-full"
+            />
+          </div>                    
+          <div>
+            <p className="text-lg">Token 2</p>
+            <input
+              type="text"
+              id="token2"
+              name="token2"
+              onChange={(e) => setToken2(e.target.value)}
+              placeholder="Fill in token"
+              className="p-2 rounded shadow w-full"
+            />
+            </div>                   
+          </div>
+
+          <div className="flex justify-center">
+            <button className="rounded bg-darkbg text-white px-12 py-4 ">
+                <input type="submit" value="Fetch" onClick={getApi}></input>
+            </button>
+          </div>                 
+   </form>
+  </div>
                 <div>{display > 0 && <Show />}</div>
             </div>
 
