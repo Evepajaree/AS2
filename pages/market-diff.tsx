@@ -8,7 +8,7 @@ const MarketDiff = () => {
 
     
     const [token1, setToken1] = useState<any>(""); //ประกาศตัวแปร 
-    const [token2, setToken2] = useState<any>("");
+    const [token2, setToken2] = useState<any>("");  //การกำหนดตัวแปร state จะมีค่าคืนกลับ 2 ค่า (ค่าจะอยู่ในอาเรย์) 
     const [allData, setAllData] = useState<any>([]);
     const [display, setDisplay] = useState<any>(0);
 
@@ -47,29 +47,30 @@ const MarketDiff = () => {
     const Show = () => {
         return (
             <div>
-                <h2  className="text-left text-3xl font-bold" >List</h2>
-                <div>
-                <table className="bg-white rounded-t-lg rounded-b-lg border-2 border-light gray  border-cyan-300"> 
+                
+                <h2  className="text-left text-5xl font-bold pb-10 " >List</h2>
+                <div className="border-2 border-[#4EABDD] rounded-lg  ">
+                <table className="bg-white rounded-lg  "> 
                 {/* แต่งส่วนตาราง  */}
                 <thead>
-                    <tr className="border-b-2 border-light gray ">
-                        <th className="p-4">Token1</th>
-                        <th className="p-4">Token2</th>
-                        <th className="p-4">Binance</th>
-                        <th className="p-4">FTX</th>
-                        <th className="p-4">Diff</th>
-                        <th className="p-4">Action</th>
-                    </tr>
+                    <tr className="border-b-2 border-light gray  ">
+                        <th className="p-4 px-10">Token1</th>
+                        <th className="p-4 px-10">Token2</th>
+                        <th className="p-4 px-10">Binance</th>
+                        <th className="p-4 px-10">FTX</th>
+                        <th className="p-4 px-10">Diff</th>
+                        <th className="p-4 px-10">Action</th>
+                    </tr >
                     </thead>
                     {allData.map((value : any, id : any) => ( 
                         <tr key={id}>
-                            <td className="p-4">{value.token1}</td>
-                            <td className="p-4">{value.token2}</td>
-                            <td className="p-4">{value.priceBinance}</td>
-                            <td className="p-4">{value.priceFTX}</td>
-                            <td className="p-4">{value.diff}%</td>  
+                            <td className="p-4 px-10">{value.token1}</td>
+                            <td className="p-4 px-10">{value.token2}</td>
+                            <td className="p-4 px-10">{value.priceBinance}</td>
+                            <td className="p-4 px-10">{value.priceFTX}</td>
+                            <td className="p-4 px-10">{value.diff}%</td>  
                             
-                            <td>
+                            <td className="p-4 px-10">
                                 <button className="bg-red-600 text-white py-2 px-4 rounded" type="submit" onClick={() => delData(id)} > Delete </button>
                             </td>
                         </tr>
@@ -77,26 +78,27 @@ const MarketDiff = () => {
                 </table>
             </div>
             </div>
+            
         );
     };
     return (
  <NavLayout>
-         <div className="bg-lightbg min-h-screen">
-            <div className="flex justify-center w-full px-16 relative mb-14">
+         <div className="bg-lightbg min-h-screen pt-8">
+            <div className="flex justify-center w-full px-16 relative mb-12">
               <div className="rounded-lg shadow-lg w-full max-w-4xl p-12 bg-white z-20 relative">
                  <form>    
                     <h3 className="text-3xl font-bold text-center mb-7">Market Diff</h3>
-                       <div className="flex justify-center mb-5 space-x-12">
+                       <div className="flex justify-center mb-5 space-x-12 ">
           
                              {/* <p className="text-lg">Token 1</p> */}
                              <div style={{ margin: "10px" }}>
-                             <p className="text-lg font-bold">Token 1</p>
+                             <p className="text-lg font-bold ">Token 1</p>
                                <input //ใส่input
                                   type="text"
                                   id="token1"
                                   name="token1"
                                   placeholder="Fill in token"
-                                  className="p-2 rounded shadow w-full"
+                                  className="p-2 rounded shadow w-full "
                                   onChange={(e) => setToken1(e.target.value)}
                           
                                 />
@@ -118,12 +120,12 @@ const MarketDiff = () => {
                         </div>
          
                     <div style={{ margin: "10px" }} className="flex justify-center">
-                    <input 
+                    <button 
                         type="submit" 
                         value="Fetch" 
-                        className="rounded bg-darkbg text-white px-12 py-4 " 
-                        onClick={getApi}>
-                    </input>
+                        className="rounded bg-darkbg hover:bg-sky-700 text-white px-12 py-4 " 
+                        onClick={getApi}> Fetch
+                    </button>
              </div>
          </form>
 </div> 

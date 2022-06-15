@@ -1,7 +1,4 @@
-import React, { useEffect, useState, createRef, useRef } from "react";
-
-// import styles from "./styles.module.css";
-
+import { useState } from "react";
 import Topbar from "../components/Topbar";
 import NavLayout from "../layouts/NavLayout";
 
@@ -9,88 +6,58 @@ import NavLayout from "../layouts/NavLayout";
 const chart: React.FC = () => {
     return (
         <NavLayout>
-        Chart
+          <div className="bg-lightbg min-h-screen pt-8">
+            <div className="flex justify-center w-full px-16 relative mb-14">
+              <div className="rounded-lg shadow-lg w-full max-w-4xl p-12 bg-white z-20 relative">
+                 <form>
+                    <h3 className="text-3xl font-bold text-center mb-7">Chart</h3>
+                      <div className="flex justify-center mb-5 space-x-12">
+             
+                      <div style={{ margin: "10px" }}>
+                      <p className="text-lg">Token 1</p>
+                         <input
+                          type="text"
+                          id="token1"
+                          name="token1"
+                          placeholder="Fill in token"
+                          className="p-2 rounded shadow w-full"
+                      />
+                     </div>
+                    
+                     <div style={{ margin: "10px" }}>
+                     <p className="text-lg">Token 2</p>
+                        <input
+                         type="text"
+                         id="token2"
+                         name="token2"
+                         placeholder="Fill in token"
+                         className="p-2 rounded shadow w-full"
+                        />
+                     </div>
+        </div>
+                    <div style={{ margin: "10px" }} className="flex justify-center">
+                    <button className="rounded bg-darkbg text-white px-12 py-4 ">Fetch</button>
+                    </div>
+                    
+
+ 
+    </form>
+    </div>
+           <div className="bg-darkbg h-full w-full absolute -top-20" />
+    </div> 
+                <div className="flex justify-center w-full px-16 relative mb-14">
+                    <div className="rounded-lg shadow-lg w-full max-w-4xl p-12 bg-white z-20 relative">
+                        <div className="flex justify-center mb-5 space-x-12">
+                             <img src="/ss.jpg" />
+                        </div>
+                    </div>
+                </div>
+    </div>
+     
+
+
         </NavLayout>
     );
 }
 
 export default chart
-
-// import React, { useEffect, useState, createRef, useRef } from "react";
-// import axios from "axios";
-// import dayjs from 'dayjs';
-// import styles from "./styles.module.css";
-// import { createChart } from 'lightweight-charts';
-
-// const chart: React.FC = () => {
-//     const [token1, setToken1] = useState("");
-//     const [token2, setToken2] = useState("");
-//     const [allData, setAllData] = useState([]);
-//     const [display, setDisplay] = useState(0);
-
-//     const getApi = async (e: React.FormEvent) => {
-//         e.preventDefault()
-//         const url = https://api1.binance.com/api/v3/klines?interval=1h&symbol=${token1}${token2};
-//         const resBinance = await fetch(url);
-//         const Binance = await resBinance.json();     
-//             const object = {};
-//             Binance.map((item : any)=>{
-//               const newobject ={
-//                 open :item[1],
-//                 hight : item[2],
-//                 low : item[3],
-//                 close : item[4]
-//               };
-//               const formatdate = dayjs(item[0]).format("YYYY-MM-DD");
-//               Object.assign(object,{[formatdate]:newobject});
-//             });
-//         console.log(object);
-
-//     }
-
-
-
-//     const Show = () => {
-//         return (
-//             <div>
-
-//             </div>
-//         );
-//     };
-//     return (
-//         <>
-//             <div>
-//                 <div style={{ margin: "10px" }}>
-//                     <a href="/marketdiff">Market Diff</a>
-//                 </div>
-//                 <div style={{ margin: "10px" }}>
-//                     <a href='/chart'>chart</a>
-//                 </div>
-//                 <div style={{ margin: "10px" }}>
-//                     <a href='/trade'>trade</a>
-//                 </div>
-
-//             </div>
-//             <h1>Chart</h1>
-//             <div>
-//                 <form>
-//                     <label>Token 1 </label>
-//                     <div style={{ margin: "10px" }}>
-//                         <input type="text" id="token1" name="token1" onChange={(e) => setToken1(e.target.value)} />
-//                     </div>
-//                     <label>Token 2 </label>
-//                     <div style={{ margin: "10px" }}>
-//                         <input type="text" id="token2" name="token2" onChange={(e) => setToken2(e.target.value)} />
-//                     </div>
-//                     <div style={{ margin: "10px" }}>
-//                         <input type="submit" value="Fetch" onClick={getApi}></input>
-//                     </div>
-//                 </form>
-//                 <div>{display > 0 && <Show />}</div>
-//             </div>
-//         </>
-//     );
-// };
-
-
-// export default chart
